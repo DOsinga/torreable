@@ -28,22 +28,13 @@ ControlPort 9051
 
 ## Installation
 
-```bash
-pip install -e .
-```
+### Click the button to install:
 
-## Usage with Goose
+[![Install in Goose](https://block.github.io/goose/img/extension-install-dark.svg)](https://block.github.io/goose/extension?cmd=uvx&arg=torreable&id=torreable&name=Torreable&description=Publish%20static%20websites%20as%20Tor%20hidden%20services%20via%20MCP)
 
-Add to your MCP config:
-```json
-{
-  "mcpServers": {
-    "torreable": {
-      "command": "torreable"
-    }
-  }
-}
-```
+### Or install manually:
+
+Go to `Advanced settings` -> `Extensions` -> `Add custom extension`. Name to your liking, use type `STDIO`, and set the `command` to `uvx torreable`. Click "Add Extension".
 
 ## Tools
 
