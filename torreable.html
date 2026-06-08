@@ -1,0 +1,57 @@
+<script type="text/markdown" id="info">
+name: Torreable
+description: >
+  An MCP server that lets AI agents like Goose publish static websites as Tor hidden services (.onion sites)
+type: ai
+github: torreable
+</script>
+
+<p>
+    Torreable is an <a href="https://modelcontextprotocol.io/">MCP server</a> that enables AI agents to publish
+    static websites as Tor hidden services (.onion sites). It bridges the gap between AI assistants and the
+    dark web, letting your AI deploy websites that are accessible only through the Tor network.
+</p>
+
+<p>
+    <strong>For Goose:</strong>
+    <a href="https://block.github.io/goose/extension?cmd=uvx&arg=torreable&id=torreable&name=Torreable&description=Publish%20static%20websites%20as%20Tor%20hidden%20services%20via%20MCP">
+        <img src="https://block.github.io/goose/img/extension-install-dark.svg" alt="Install in Goose">
+    </a>
+</p>
+
+<p>
+    <strong>For Claude Desktop:</strong> Add to your claude_desktop_config.json:
+</p>
+<pre>{
+  "mcpServers": {
+    "torreable": {
+      "command": "uvx",
+      "args": ["torreable"]
+    }
+  }
+}</pre>
+
+<p>
+    <strong>For other MCP clients:</strong> Run <em>uvx torreable</em> as an STDIO-based MCP server.
+</p>
+
+<p>
+    <strong>Tor Setup:</strong> You need Tor running with a control port. On macOS: <em>brew install tor && brew services start tor</em>.
+    On Linux: <em>apt install tor && systemctl start tor</em>.
+    Add <em>ControlPort 9051</em> to your torrc.
+</p>
+
+<p>
+    <strong>Tools:</strong>
+    <em>create_site(name, directory)</em> registers a site,
+    <em>preview(name)</em> starts a local server,
+    <em>publish(name)</em> deploys to Tor and returns the .onion URL,
+    <em>unpublish(name)</em> takes it offline but keeps the address,
+    <em>destroy(name)</em> deletes everything,
+    <em>list_sites()</em> shows all sites.
+</p>
+
+<p>
+    Sites are stored in ~/.torreable/sites/. Each site keeps its Tor private key, so the .onion
+    address persists across publishes. Sites are only reachable while torreable is running.
+</p>
